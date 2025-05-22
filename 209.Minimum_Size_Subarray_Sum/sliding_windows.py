@@ -10,7 +10,7 @@ class Solution:
             while total - nums[left] >= target:
                 total -= nums[left]
                 left += 1
+            # total - nums[left] < target && total >= target
             if total >= target:
                 ans = min(ans, right-left+1)
-        return ans if ans <= n else 0
-            
+        return ans if ans <= n else 0           

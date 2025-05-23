@@ -51,3 +51,24 @@ class Solution:
         return ans if ans != n + 1 else 0
 ```
 这种方法完全对应了上面的queue的图
+
+
+错误答案（枚举left）：
+```
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        left, right = 0, 0
+        n = len(nums)
+        ans = n + 1
+        total = 0
+        # 枚举right更好
+        while left < n:
+            total += nums[left]
+            while total < target and right < n:
+                total += nums[right]
+                right += 1
+            ans = min(ans, right-left+1)
+            total -= nums[left]
+            left += 1
+        return ans
+```
